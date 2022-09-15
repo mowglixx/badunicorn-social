@@ -23,4 +23,4 @@ The current plan are to create a MERN stack application, below are the current p
 ## Planned features
 
 - User provided PGP encrypted messages with client side auto decrypt at recipient end
-- 
+- TBC, stay tuned
