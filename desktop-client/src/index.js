@@ -5,12 +5,14 @@
 *
 */
 
-
 // Dependancies
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+// import {BrowserRouter} from 'react-router-dom'
 
 // Helpers (API, icons)
+import Icon from '@mdi/react'; //import icons lib
+import {mdiAccount} from '@mdi/js'; // import required icons
 
 // Layout and styles for page
 import Layout from './Layout'
@@ -30,13 +32,16 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 // render the app
 root.render(
   <React.StrictMode>
-  <Layout className="dave">
+  <Layout>
+  {/* <BrowserRouter> */}
+  <Icon path={mdiAccount} size={1} />
     <Home />
     <Feed />
     <Messenger />
     <Photos />
     <Profile />
     <Search />
+  {/* </BrowserRouter> */}
   </Layout>
   </React.StrictMode>
 )

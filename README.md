@@ -12,13 +12,13 @@ The current plan are to create a MERN stack application, below are the current p
 
 ### Frontend
 
-- React
-- Icons8
+- [React](https://reactjs.org/)
+- ~~Icons8~~ [Material Design Icons](https://github.com/Templarian/MaterialDesign-React)
 
 ### Backend
 
-- Express
-- JWT Auth tokens with Public Key encryption
+- [Express](https://expressjs.com/)
+- [JWT](https://jwt.io/) Auth tokens with Public Key encryption
 
 ## Planned features
 
