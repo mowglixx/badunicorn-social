@@ -26,13 +26,32 @@ import Photos from './Pages/Photos'
 import Profile from './Pages/Profile'
 import Search from './Pages/Search'
 
+const navLinks = [
+  {
+    href: "https://google.com/",
+    text: "Home"
+  },
+  {
+    href: "https://google.com/",
+    text: "Profile"
+  },
+  {
+    href: "https://google.com/",
+    text: "Messages"
+  },
+  {
+    href: "https://google.com/",
+    text: "Logout"
+  },
+]
+
 // create the virtual DOM root
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 // render the app
 root.render(
   <React.StrictMode>
-  <Layout>
+  <Layout links={navLinks}>
   {/* <BrowserRouter> */}
   <Icon path={mdiAccount} size={1} />
     <Home />
