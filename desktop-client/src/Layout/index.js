@@ -1,19 +1,20 @@
 
 const Layout = (props) => {
   return (
-    <div {...props}>
-    <nav>
-    {process.env.REACT_APP_BRAND_NAME || "Badunicorn Social"}
-      <ul>
-        {props.links.map(link => {
-          return (
-            <a href={link.href}>{link.text}</a>
-          )
-        })}
-      </ul>
+    <>
+    <nav id="nav" title={props.brandName}>
+    {props.links.map(link => {
+      return(
+        <a id="themeButton" class="nav-link" title={link.text} description={link.description} href={link.href}>
+            {link.icon}
+        </a>
+      )
+    })}
     </nav>
-        {props.children}
+    <div className="main">
+    {props.children}
     </div>
+    </>
   )
 }
 
