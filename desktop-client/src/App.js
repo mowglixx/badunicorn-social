@@ -17,11 +17,11 @@ import { mdiAccount, mdiHome, mdiLogout, mdiMessage } from '@mdi/js'; // import 
 import Layout from './Layout'
 
 // Pages
-import Home from './Pages/Home'
+// import Home from './Pages/Home'
 // import Feed from './Pages/Feed'
 // import Messenger from './Pages/Messenger'
 // import Photos from './Pages/Photos'
-// import Profile from './Pages/Profile'
+import Profile from './Pages/Profile'
 // import Search from './Pages/Search'
 // import Card from './Components/Card';
 
@@ -77,7 +77,8 @@ const App = () => {
     return (
     <Layout links={navLinks} brandName={BRANDING.brandName} darkMode={darkMode} setDarkMode={setDarkMode}>
       {/* <BrowserRouter> */}
-        <Home/>
+        {/* <Home/> */}
+        <Profile />
       {/* </BrowserRouter> */}
     </Layout>)
 }

@@ -8,7 +8,6 @@
 # testing
 # included for testing (pre-api)
 # /coverage
-fakeapi.js
 
 # production
 /build
