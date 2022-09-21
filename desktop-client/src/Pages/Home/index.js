@@ -17,7 +17,11 @@ const Home = (props) => {
 
       {/* bottom shelf */}
       <div className='flex-row'>
-        <div className='flex-col' style={{ paddingRight: 'var(--margin)' }}>
+        <div
+          className='flex-col'
+          style={{
+            paddingRight: 'var(--margin)'
+          }}>
           <Card header='Interests'>
             Hey there
           </Card>

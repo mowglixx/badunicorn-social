@@ -1,4 +1,4 @@
-# Badunicorn Social
+# Badunicorn Social - (WIP)
 
 > Badunicorn social is a programming exercise to get a feel for MERN stack programming.
 
