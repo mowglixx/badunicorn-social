@@ -1,0 +1,54 @@
+/* Buttons */
+.button{
+    display: flex;
+    font-size: 1em;
+    font-weight: bold;
+    padding: calc(var(--margin) * 1.2) calc(var(--margin) * 2);
+    border-radius: var(--wide-margin);
+    box-shadow: var(--surface-shadow);
+    transition: box-shadow 0.2s;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.button:hover{
+    box-shadow: var(--surface-hover-shadow);
+    filter: brightness(1.05);
+}
+.button:active{
+    box-shadow: var(--surface-hover-shadow);
+    filter: brightness(1.1);
+}
+
+.button-group{
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: var(--margin);
+    border-radius: var(--margin);
+    background-color: var(--surface);
+    box-shadow: var(--surface-hover-shadow);
+    transition: box-shadow 0.3s;
+}
+.button-group:hover{
+    box-shadow: none;
+    box-shadow: var(--surface-shadow);
+}
+.button-group>.button{
+    box-shadow: none;
+    border-radius: 0;
+    margin:0;
+    z-index: 1;
+}
+.button-group>.button:hover{
+    box-shadow: var(--surface-hover-shadow);
+    margin:0;
+}
+.button-group>.button:first-child{
+    border-top-left-radius: var(--margin);
+    border-bottom-left-radius: var(--margin);
+}
+.button-group>.button:last-child{
+    border-top-right-radius: var(--margin);
+    border-bottom-right-radius: var(--margin);
+}

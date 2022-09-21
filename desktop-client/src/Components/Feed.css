@@ -1,0 +1,13 @@
+.feed{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 100vh;
+    margin-top: -1em;
+}
+.feed>*{
+    margin-top: 2em;
+}
+
+.feed>{
+    
+}

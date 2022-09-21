@@ -1,0 +1,28 @@
+/* card */
+
+.card-image{
+    display: flex;
+    padding: 0;
+    border-radius: var(--margin);
+    height: 5em;
+    max-width: 150px;
+    box-shadow: var(--surface-shadow);
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: var(--margin);
+}
+.card-header{
+    display: inline;
+    width: 100%;
+    padding: var(--margin);
+    color: var(--headers);
+}
+.card-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}

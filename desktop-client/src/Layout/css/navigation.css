@@ -1,0 +1,84 @@
+/* nav */
+nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 4em;
+    flex-direction: column;
+    background-color: var(--primary);
+    backdrop-filter: blur(50px);
+    padding: var(--margin);
+    border-right: 1px rgb(0, 0, 0,0.2) solid;
+    /* box-shadow: 0.5em 0 1em rgba(0, 0, 0, 0.3); */
+    transition: ease-in 0.2s;
+    justify-content: space-between;
+}
+nav:hover{
+    background-color: var(--primary-solid);
+    left: 0;
+}
+nav:before{
+    content: attr(title);
+    position: absolute;
+    left: -6em;
+    opacity: 0;
+    transition: all 0.3s;
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--font-size);
+    min-width: 16em;
+    max-width: 10em;
+    color: var(--on-surface);
+    /* border: 0.1em solid var(--on-surface); */
+    z-index: 9999;
+    padding: var(--margin);
+    /* margin: calc(var(--margin) * 3); */
+    background-color: var(--surface-solid);
+    border-radius: var(--margin);
+    /* height: fit-content; */
+    box-shadow: var(--surface-shadow);
+    backdrop-filter: opacity(0.2);
+    margin-top: 75vh;
+}
+nav:hover:before{
+    left: 1em;
+    opacity: 1;
+}
+
+nav a, nav button {
+    display: flex;
+    box-shadow: var(--surface-shadow);
+    font-size: calc(var(--margin) * 2);
+    background-color: var(--surface-solid);
+    margin: var(--y-base) 0;
+    border-radius: 35%;
+    padding: calc(var(--margin) / 4);
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+nav a:hover, nav button {
+    filter: brightness(1.1);
+    background-color: var(--surface);
+    text-decoration: none;
+}
+
+nav a:hover:after, nav button:hover:after {
+    display: flex;
+    position: absolute;
+    text-align: left;
+    font-size: var(--font-size);
+    content: attr(title) '\a' attr(description);
+    white-space: pre;
+    margin-left: 4em;
+    /* min-width: 10em; */
+    /* background-color: var(--surface); */
+    color: var(--on-surface);
+    /* z-index: -10; */
+    padding: var(--margin);
+    /* margin: calc(var(--margin) * 3); */
+    background-color: var(--bg);
+    border-radius: var(--wide-margin);
+    /* height: fit-content; */
+    box-shadow: var(--surface-shadow);
+}

@@ -6,7 +6,8 @@
 .pnp.js
 
 # testing
-/coverage
+# included for testing (pre-api)
+# /coverage
 fakeapi.js
 
 # production

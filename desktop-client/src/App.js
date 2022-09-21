@@ -15,7 +15,6 @@ import { mdiAccount, mdiHome, mdiLogout, mdiMessage } from '@mdi/js'; // import 
 
 // Layout and styles for page
 import Layout from './Layout'
-import './index.css'
 
 // Pages
 import Home from './Pages/Home'
@@ -35,42 +34,50 @@ const navLinks = [
   {
     text: "Home",
     description: 'Your homepage',
-    href: "https://google.com/",
+    href: "#",
     icon: <Icon path={mdiHome} size={1} />
     
   },
   {
-    href: "https://google.com/",
+    href: "#",
     text: "Profile",
     description: 'Check your personal profile',
     icon: <Icon path={mdiAccount} size={1} />
   },
   {
-    href: "https://google.com/",
+    href: "#",
     text: "Messages",
     description: 'Check your messages',
     icon: <Icon path={mdiMessage} size={1} />
   },
   {
-    href: "https://google.com/",
+    href: "#",
     text: "Logout",
     description: 'Log out of your account',
     icon: <Icon path={mdiLogout} size={1} />
-  },
+  }
 ]
 
-// render the app
+// 
 const App = () => {
+  // darkMode state
   const [darkMode, setDarkMode] = useState(false)
 
+  // darkMode Toggle
   useEffect(() => {
     document.body.classList.toggle('dark')
   }, [darkMode])
-
+  
+  // document title
+  useEffect(() => {
+    document.title = "Chicken"
+  }, [])
+  
+  // render the app
     return (
-    <Layout links={navLinks} brandName={BRANDING.brandName}>
+    <Layout links={navLinks} brandName={BRANDING.brandName} darkMode={darkMode} setDarkMode={setDarkMode}>
       {/* <BrowserRouter> */}
-        <Home darkMode={darkMode} setDarkMode={setDarkMode}/>
+        <Home/>
       {/* </BrowserRouter> */}
     </Layout>)
 }

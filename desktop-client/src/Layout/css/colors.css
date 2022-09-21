@@ -1,0 +1,55 @@
+.brand {
+    color: white;
+}
+
+.primary *{
+    color: var(--on-primary);
+}
+
+.secondary *{
+    color: var(--on-surface);
+}
+
+.primary{
+    background-color: var(--primary-solid);
+    color: var(--on-primary);
+    /* border: 0.15em solid var(--on-primary); */
+}
+
+.secondary{
+    background-color: var(--surface);
+    color: var(--on-surface);
+    /* border: 0.15em solid var(--on-surface); */
+}
+
+.surface{
+    display: flex;
+    padding: var(--wide-margin);
+    margin: calc(var(--margin)) 0;
+    background-color: var(--surface);
+    border-radius: var(--margin);
+    height: fit-content;
+    box-shadow: var(--surface-shadow);
+}
+
+
+/*
+*  These are basement dweller classes, 
+*  don't let them out the basement!
+*  or all hell will break loose 
+*/
+
+.hidden{
+    height: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    filter: scale(0);
+    opacity: 0;
+    transition: all 0.1s;
+}
+.hidden>img{
+    /* fixes gross animation 
+    when hiding parent from child */
+    opacity: 0;
+}
