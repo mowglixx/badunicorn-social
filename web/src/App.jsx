@@ -65,7 +65,7 @@ const navLinks = [
 // 
 const App = () => {
   // darkMode state
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
 
   const [userLoggedIn, setUserLogin] = useState({})
 

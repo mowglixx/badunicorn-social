@@ -1,6 +1,5 @@
 import {Link} from 'react-router-dom'
 
-import Button from '../Components/Button'
 
 // Helpers (API, icons)
 import Icon from '@mdi/react'; //import icons lib
@@ -19,6 +18,7 @@ import './css/navigation.css'
 import { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import Button from '../Components/Button'
 
 
 const Layout = (props) => {
