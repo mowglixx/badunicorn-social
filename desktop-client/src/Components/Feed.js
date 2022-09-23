@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 import { PostButtons } from "./PostButtons"
 import Card from './Card'
 import './Feed.css'
@@ -15,18 +17,23 @@ const Feed = (props) => {
               key={post.id.$oid}
               header={
                 <div className="flex-row">
-                  <a href={`/profile/${post.author.userId}`}>
+                  <Link to={`/profile/${post.author.userId}`}>
                     <img className="card-image" src={post.author.img} alt={`${fullName}`} />
-                  </a>
+                  </Link>
                   <div className="flex-col">
-                    <a href={`/profile/${post.author.userId}`}>
+                    <Link to={`/profile/${post.author.userId}`}>
                       <h2 className="no-padding">{`${fullName}`}</h2>
-                    </a>
+                    </Link>
                     <p className="no-padding postTimestampText" title="">{dateHelper(post.datePosted)}</p>
                   </div>
                 </div>}
               footer={
+                <div className='flex-col'>
+                <Link to='#' onClick={() => { console.log('Clicked on post interactions for post-'+post.id.$oid) }} style={{textAlign: 'right', textDecoration: 'none'}}>
+                Many Like, Such Comment
+                </Link>
                 <PostButtons postId={post.id} />
+                </div>
               }>
               <p className="postContentText">{post.content}</p>
             </Card>
