@@ -5,12 +5,13 @@ import Feed from '../../Components/Feed';
 import Card from '../../Components/Card';
 
 const Home = (props) => {
+  props.setTitle(`Home`)
   return (
     <div className='flex-col'>
 
       {/* top shelf */}
       <div className='flex-row'>
-        <Card header='Top' width='100%'>
+        <Card header='Home' width='100%'>
           Hey there
         </Card>
       </div>
