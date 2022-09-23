@@ -18,3 +18,21 @@
     padding-top: inherit;
     margin-top: 0 ;
 }
+
+.top-bar{
+    /* margin-top: calc(var(--margin) - calc(var(--margin) * 2)); */
+    padding: var(--margin);
+    background-color: var(--surface);
+    min-width: 100vw;
+}
+
+.top-bar>div:first-child{
+    padding-left: 6em;
+}
+
+.top-bar>div:nth-child(2){
+    margin-left: -6em;
+}
+.top-bar>div:last-child{
+    margin-right: 2em;
+}
