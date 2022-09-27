@@ -8,7 +8,8 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-app.use(userRouter);
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+app.use('/user', userRouter);
 
 app.get("/health", (req, res) => {
   res.status(200).send({ message: "API is working" });
