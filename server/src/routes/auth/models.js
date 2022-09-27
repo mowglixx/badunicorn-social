@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const mongoose = require("mongoose")
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs")
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -18,21 +18,23 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
+})
 
 userSchema.methods.generateAuthToken = function () {
-  console.log(this);
-  return jwt.sign({ _id: this._id }, process.env.SECRET);
-};
+  console.log('route accessed')
+  return jwt.sign({ _id: this._id }, process.env.SECRET)
+}
 
 userSchema.statics.findByCredentials = async (username, pass) => {
-  const user = await User.findOne({ username });
+  const user = await User.findOne({ username })
   if (user && bcrypt.compare(pass, user.password)) {
-    return user;
+    return {
+      username: user
+    }
   }
-  throw new Error();
-};
+  throw new Error()
+}
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema)
 
-module.exports = User;
+module.exports = User

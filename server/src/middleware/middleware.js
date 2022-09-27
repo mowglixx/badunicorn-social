@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const User = require("../user/userModel");
+const User = require("../routes/auth/models");
 
 exports.tokenCheck = async (req, res, next) => {
   try {
@@ -9,22 +9,20 @@ exports.tokenCheck = async (req, res, next) => {
     req.user = await User.findById(decoded._id);
     next();
   } catch (error) {
-    console.log(error);
     res.status(500).send({ error: error.message });
   }
 };
 
 exports.hashPass = async (req, res, next) => {
   try {
-    if (req.body.pass) {
-      req.body.pass = await bcrypt.hash(req.body.pass, 8);
+    if (req.body.password) {
+      req.body.password = await bcrypt.hash(req.body.password, 8);
       next();
     } else if (req.body.key === "password") {
       req.body.value = await bcrypt.hash(req.body.value, 8);
       next();
     }
   } catch (error) {
-    console.log(error);
     res.status(500).send({ error: error.message });
   }
 };

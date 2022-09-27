@@ -1,10 +1,14 @@
-const User = require("./userModel");
+const User = require("./models");
 
 exports.addUser = async (req, res) => {
   try {
     const newUser = await User.create(req.body);
     const token = newUser.generateAuthToken();
-    res.status(200).send({ user: newUser.username, token });
+    // res.status(200).send({ user: newUser.username, token });
+    res.status(200).send({ 
+      user: newUser.username, 
+      token: token 
+    });
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
@@ -62,7 +66,6 @@ exports.deleteUser = async (req, res) => {
       res.status(200).send({ message: "Successfully deleted user" });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).send({ error: error.message });
   }
 };
