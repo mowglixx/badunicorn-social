@@ -6,9 +6,9 @@ const cors = require("cors") // Cross-Origin Resource Sharing
 const morgan = require('morgan')
 
 // routers
-const authRouter = require("./src/auth/routes");
-const profileRouter = require("./src/routes/profile/routes");
-const postRouter = require('./src/routes/')
+const authRouter = require("./src/routes/auth/routes");
+// const profileRouter = require("./src/routes/profile/routes");
+// const postRouter = require('./src/routes/')
 
 // setup express app instance
 const app = express()
@@ -48,7 +48,11 @@ app.get("/status", (req, res) => {
   });
 });
 
+app.get('*', (req,res) => {
+  res.status(404).send('<style>*{ background: #000;}</style><a href="https://http.cat/404"><img title="404 Error - Not Found" src="https://http.cat/404" /></a>')
+})
+
 // let the app listen on the defined port and 
 app.listen(CONFIG.endpoint.port, () => {
-  console.log(`Listening at ${CONFIG.endpoint.protocol}://${CONFIG.endpoint.uri}:${port}`);
+  console.log(`Listening at ${CONFIG.endpoint.protocol}://${CONFIG.endpoint.uri}:${CONFIG.endpoint.port}`);
 });

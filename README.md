@@ -8,7 +8,7 @@ It's is a technical exercise with very little creativity required due to the sat
 
 ## What tools are used?
 
-The current plan are to create a MERN stack application, below are the current planned libraries.
+The current plan is to create a MERN stack application, below are the current planned libraries.
 
 ### Frontend
 
