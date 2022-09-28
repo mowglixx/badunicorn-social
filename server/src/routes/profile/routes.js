@@ -1,10 +1,14 @@
 const { Router } = require("express");
-const { updateprofile, deleteprofile, listprofiles } = require("./controllers");
+const { updateProfile } = require("./controllers");
 const { tokenCheck, hashPass } = require("../../middleware/middleware");
 const profileRouter = Router();
 
-profileRouter.get("/profile/:id", listprofiles);
-profileRouter.put("/updateProfile", tokenCheck, updateprofile);
+profileRouter.param('userId', (req,res,next,userId) => {
+
+})
+
+profileRouter.get("/profile/:userId", listProfiles);
+profileRouter.put("/updateProfile", tokenCheck, updateProfile);
 // will be implemented on the backend
 // profileRouter.delete("/profile", tokenCheck, deleteprofile);
 
