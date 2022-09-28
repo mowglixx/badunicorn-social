@@ -12,15 +12,41 @@ The current plan is to create a MERN stack application, below are the current pl
 
 ### Frontend
 
-- [React](https://reactjs.org/)
-- ~~Icons8~~ [Material Design Icons](https://github.com/Templarian/MaterialDesign-React)
+```json
+  "dependencies": {
+    "@mdi/js": "^7.0.96",
+    "@mdi/react": "^1.6.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "vite": "^3.1.0"
+  }
+```
 
 ### Backend
 
-- [Express](https://expressjs.com/)
-- [JWT](https://jwt.io/) Auth tokens with Public Key encryption
+```json
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.8",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+```
 
 ## Planned features
 
 - User provided PGP encrypted messages with client side auto decrypt at recipient end
-- TBC, stay tuned
+- stay tuned
