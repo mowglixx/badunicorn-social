@@ -75,7 +75,7 @@ const Messenger = (props) => {
         </div>
         </div>
     </main>
-  );
+  )
 }
 
-export default Messenger;
+export default Messenger

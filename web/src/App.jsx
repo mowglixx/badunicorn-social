@@ -15,9 +15,9 @@ import {
 } from 'react-router-dom'
 
 // Helpers (API, icons)
-import Icon from '@mdi/react'; //import icons lib
-import { mdiAccount, mdiHome, mdiLogout, mdiMessage } from '@mdi/js'; // import required icons
-// import { getUser } from './Helpers/userHelper';
+import Icon from '@mdi/react' //import icons lib
+import { mdiAccount, mdiHome, mdiLogout, mdiMessage } from '@mdi/js' // import required icons
+// import { getUser } from './Helpers/userHelper'
 
 // Layout and styles for page
 import Layout from './Layout'
@@ -29,9 +29,16 @@ import Photos from './Pages/Photos'
 import Profile from './Pages/Profile'
 import Search from './Pages/Search'
 
+const ENV = import.meta.env
+
 // Brand Vars
-const BRANDING = {
-  brandName: import.meta.env.REACT_APP_BRAND_NAME || "Badunicorn Club",
+export const BRANDING = {
+  brandName: ENV.VITE_BRAND_NAME || 'Badunicorn Social',
+}
+
+export const APP_CONFIG = {
+  api_url: ENV.VITE_API_URI,
+  api_key: ENV.VITE_API_KEY
 }
 
 const navLinks = [
@@ -71,6 +78,7 @@ const App = () => {
 
   const setBrandedTitle = title => {
     document.title = `${title && `${title} - `}${BRANDING.brandName}`
+    return document.title
   }
 
   // darkMode Toggle

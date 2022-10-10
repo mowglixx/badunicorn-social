@@ -1,7 +1,7 @@
 /* css variables */
 :root {
 
-    --theme-hue-val: 230;
+    --theme-hue-val: 195;
     
     --primary: hsla(var(--theme-hue-val), 100%, 60%, 0.75);
     --primary-solid: hsla(var(--theme-hue-val), 100%, 70%,1);

@@ -1,8 +1,8 @@
 import Button from './Button'
 
 // Helpers (API, icons)
-import Icon from '@mdi/react'; //import icons lib
-import { mdiThumbUp, mdiChat, mdiShare } from '@mdi/js'; // import required icons
+import Icon from '@mdi/react' //import icons lib
+import { mdiThumbUp, mdiChat, mdiShare } from '@mdi/js' // import required icons
 
 
 export const PostButtons = ({ postId }) => {

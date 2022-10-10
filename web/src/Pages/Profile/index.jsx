@@ -1,35 +1,35 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 
 // fake api
-import { feed } from '../../coverage/fakeapi';
-import { getUser } from '../../Helpers/userHelper';
+import { feed } from '../../coverage/fakeapi'
+import { getUser } from '../../Helpers/userHelper'
 
-import Feed from '../../Components/Feed';
-import Card from '../../Components/Card';
+import Feed from '../../Components/Feed'
+import Card from '../../Components/Card'
+import { useState } from 'react'
 
 const Profile = (props) => {
   const {userID} = useParams()
-  
-    let profileUser = getUser(userID).data
-    props.setTitle(`${profileUser.firstName} ${profileUser.lastName}'s Profile`)
-    return (
+  let profileUser = getUser(userID).data
+  props.setTitle(`${profileUser.firstName} ${profileUser.lastName}'s Profile`)
+  return (
     <div className='flex-col'>
 
       {/* top shelf */}
       <div className='flex-row'>
         <Card header={
           <div>
-          <div>
-            <img src={profileUser.img} alt={`${profileUser.firstName} ${profileUser.lastName}`} />
+            <div>
+              <img src={profileUser.img} alt={`${profileUser.firstName} ${profileUser.lastName}`} />
+            </div>
+            <div>
+              {`${profileUser.firstName} ${profileUser.lastName}'s Profile`}
+            </div>
           </div>
-          <div>
-            {`${profileUser.firstName} ${profileUser.lastName}'s Profile`}
-          </div>
-          </div>
-            } footer={profileUser.userId} width='100%'>
-        <pre>
-          {JSON.stringify(profileUser, null, 2)}
-        </pre>
+        } footer={profileUser.userId} width='100%'>
+          <pre>
+            {JSON.stringify(profileUser, null, 2)}
+          </pre>
         </Card>
       </div>
 
@@ -41,11 +41,11 @@ const Profile = (props) => {
           </Card>
         </div>
         <div className='flex-col'>
-          <Feed feed={feed} />
+          <Feed feed={feed} userId={profileUser.userId} />
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 

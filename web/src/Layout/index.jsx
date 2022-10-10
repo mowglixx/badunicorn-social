@@ -2,9 +2,9 @@ import {Link} from 'react-router-dom'
 
 
 // Helpers (API, icons)
-import Icon from '@mdi/react'; //import icons lib
-import {mdiMoonWaxingCrescent, mdiCog } from '@mdi/js'; // import required icons
-import { getUser } from '../Helpers/userHelper';
+import Icon from '@mdi/react' //import icons lib
+import { mdiMoonWaxingCrescent, mdiCog } from '@mdi/js' // import required icons
+import { getUser } from '../Helpers/userHelper'
 
 
 import './css/fonts.css'
@@ -15,8 +15,8 @@ import './css/typography.css'
 import './css/positioning.css'
 import './css/colors.css'
 import './css/navigation.css'
-import { useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import Button from '../Components/Button'
 
@@ -34,15 +34,15 @@ const Layout = (props) => {
   
   return (
     <>
-    <div className='top-bar flex-row flex-space-between'>
+      <div id='top' className='top-bar flex-row flex-space-between'>
+        <div className='flex-row'>
+          {props.brandName}
+        </div>
       <div className='flex-row'>
       <form onSubmit={handleSearch}>
         <input ref={topBarSearchForm} className='surface' type={'text'} placeholder='Search' />
       </form>
-      </div>
-      <div className='flex-row'>
-      Logged in User Widget here
-      </div>
+        </div>
     </div>
       <nav
         title={props.brandName}>

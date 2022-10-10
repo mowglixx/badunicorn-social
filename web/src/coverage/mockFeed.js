@@ -51,7 +51,7 @@ export const feed = [
             lastName: "Igounet",
             img: `https://picsum.photos/seed/${uuidV4()}/150/150`
         },
-        content: "Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
+        content: "Donec vitae nisi. Nam ultrices, https://www.youtube.com/watch?v=0YiNACjWW-4 libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
         datePosted: twoDaysAgo
     },
     {
@@ -64,7 +64,7 @@ export const feed = [
             lastName: "Exton",
             img: `https://picsum.photos/seed/${uuidV4()}/150/150`
         },
-        content: "Proin at turpis a pede posuere nonummy. Integer non velit. ",
+        content: "Proin at turpis a pede posuere facebook.com nonummy. Integer non velit. ",
         datePosted: aWeekAgo
     },
     {
@@ -155,7 +155,7 @@ export const feed = [
             lastName: "Pearman",
             img: `https://picsum.photos/seed/${uuidV4()}/150/150`
         },
-        content: "In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
+        content: "In hac habitasse google.com platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.",
         datePosted: "1655063192000"
     },
     {

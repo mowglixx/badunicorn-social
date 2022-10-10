@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import {getUser} from '../../Helpers/userHelper'
+import { getUser } from '../../Helpers/userHelper'
 
 const Photos = () => {
   const {userID} = useParams()

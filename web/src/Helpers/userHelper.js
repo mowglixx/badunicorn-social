@@ -1,4 +1,4 @@
-import { feed } from "../coverage/fakeapi";
+import { feed } from "../coverage/fakeapi"
 
 export const getUser = (userID) => {
     return {

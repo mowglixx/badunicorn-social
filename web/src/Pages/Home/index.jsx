@@ -1,11 +1,11 @@
 // fake api
-import { feed } from '../../coverage/fakeapi';
+import { feed } from '../../coverage/fakeapi'
 
-import Feed from '../../Components/Feed';
-import Card from '../../Components/Card';
+import Feed from '../../Components/Feed'
+import Card from '../../Components/Card'
 
-const Home = (props) => {
-  props.setTitle(`Home`)
+const Home = ({setTitle}) => {
+  setTitle(`Home`)
   return (
     <div className='flex-col'>
 
@@ -32,7 +32,7 @@ const Home = (props) => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home
