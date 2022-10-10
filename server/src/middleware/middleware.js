@@ -1,28 +1,29 @@
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const User = require("../routes/auth/models");
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs")
+const User = require("../routes/auth/models")
 
 exports.tokenCheck = async (req, res, next) => {
   try {
-    const token = req.header("Authorization").replace("Bearer ", "");
-    const decoded = jwt.verify(token, process.env.SECRET);
-    req.user = await User.findById(decoded._id);
-    next();
+    const token = req.header("Authorization").replace("Bearer ", "")
+    const decoded = jwt.verify(token, process.env.SECRET)
+    req.user = await User.findOne({ 'auth.username': decoded.auth.username })
+    next()
+    return
   } catch (error) {
-    res.status(500).send({ error: error.message });
+    res.status(500).send({ error: error.message })
   }
-};
+}
 
 exports.hashPass = async (req, res, next) => {
   try {
     if (req.body.password) {
-      req.body.password = await bcrypt.hash(req.body.password, 8);
-      next();
+      req.body.password = await bcrypt.hash(req.body.password, 8)
+      next()
     } else if (req.body.key === "password") {
-      req.body.value = await bcrypt.hash(req.body.value, 8);
-      next();
+      req.body.value = await bcrypt.hash(req.body.value, 8)
+      next()
     }
   } catch (error) {
-    res.status(500).send({ error: error.message });
+    res.status(500).send({ error: error.message })
   }
-};
+}

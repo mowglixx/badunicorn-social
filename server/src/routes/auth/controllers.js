@@ -1,71 +1,93 @@
-const User = require("./models");
+const { uuid: v4 } = require("uuid")
+const { handleError } = require("../../helpers/errorHandler.js")
+const User = require("./models")
 
-exports.addUser = async (req, res) => {
+exports.addUser = async (req, res, next) => {
   try {
-    const newUser = await User.create(req.body);
-    const token = newUser.generateAuthToken();
-    // res.status(200).send({ user: newUser.username, token });
-    res.status(200).send({ 
-      user: newUser.username, 
-      token: token 
-    });
-  } catch (error) {
-    res.status(500).send({ error: error.message });
-  }
-};
+    const newUser = await User.create({ auth: req.body })
+    // const profile = await Profile.create({userId: newUser._id})  // create a profile for the new user
+    const token = newUser.generateAuthToken()
+    // res.status(200).send({ user: newUser.username, token })
+    res.status(200).send({
+      user: newUser.auth.username,
+      token: token
+    })
+  } catch (e) {
 
-exports.listUsers = async (req, res) => {
+    next(e)
+  }
+}
+
+exports.listUsers = async (req, res, next) => {
   try {
-      const listUsers = await User.find({});
-      const usernames = listUsers.map((users) => {
-          return users
-      })
-      res.status(200).send({users: usernames})
-  } catch (error) {
-      res.status(500).send({ error: error.message });
+    const listUsers = await User.find({})
+    const scope = req.query.scope
+    const userReq = req.query.user
+    const usernames = listUsers.map(user => {
+      return (
+        {
+          id: user._id,
+          username: user.auth.username
+        }
+      )
+    })
+    res.send({
+      scope: scope ? JSON.parse(scope) : false,
+      users: userReq ? usernames.filter(user => user.auth.username === userReq) : usernames
+    })
+  } catch (e) {
+    next(e)
   }
-}  
+}
 
 
-exports.login = async (req, res) => {
+exports.login = async (req, res, next) => {
   try {
     if (req.user) {
-      res.status(200).send({ user: req.user.username });
+      res.status(200).send({ user: req.user })
     } else {
       const user = await User.findByCredentials(
         req.body.username,
         req.body.password
-      );
-      res.status(200).send({ username: user.username });
+      )
+      const token = user.generateAuthToken()
+      res.cookie('token', token).status(200).send({
+        username: user.auth.username
+      })
     }
-  } catch (error) {
-    res.status(500).send({ error: error.message });
+  } catch (e) {
+    next(e)
   }
-};
+}
 
-exports.updateUser = async (req, res) => {
+
+exports.updateUser = async (req, res, next) => {
   try {
     if (req.user) {
       await User.findByIdAndUpdate(req.user._id, {
         $set: { [req.body.key]: req.body.value },
-      });
-      const user = await User.findById(req.user._id);
-      res.status(200).send({ user: user.username });
+      })
+      const user = await User.findById(req.user._id)
+      res.status(200).send({ user: user.username })
     } else {
-      throw new Error();
+      throw handleError(400, 'User not logged in')
     }
-  } catch (error) {
-    res.status(500).send({ error: error.message });
+  } catch (e) {
+    next(e)
   }
-};
+}
 
-exports.deleteUser = async (req, res) => {
+exports.deleteUser = async (req, res, next) => {
   try {
     if (req.user) {
-      await User.findByIdAndDelete(req.user._id);
-      res.status(200).send({ message: "Successfully deleted user" });
+      await User.findByIdAndDelete(req.user._id)
+      res.status(200).send({ message: "Successfully deleted user" })
+      return
     }
-  } catch (error) {
-    res.status(500).send({ error: error.message });
+    throw handleError(
+      400,
+      'User not able to be deleted, you might not be authorised to delete this user or the user may not exist, either way it\'s not happening...')
+  } catch (e) {
+    next(e)
   }
-};
+}

@@ -1,15 +1,23 @@
-const { Router } = require("express")
-const { addUser, login, updateUser, deleteUser, listUsers } = require("./controllers")
-const { tokenCheck, hashPass } = require("../../middleware/middleware")
-const userRouter = Router()
+const authRouter = require('express').Router()
 
-// userRouter.param('userId' (req, res, next, userId) => {
+// controllers
+const {
+    addUser,
+    login,
+    updateUser,
+    deleteUser,
+    listUsers,
+    middleError } = require('./controllers')
+const { tokenCheck, hashPass } = require('../../middleware/middleware')
+
+// authRouter.param('userId' (req, res, next, userId) => {
 
 // })
-userRouter.post("/register", hashPass, addUser)
-userRouter.post("/login", login)
-userRouter.get("/list", listUsers)
-userRouter.put("/update", tokenCheck, updateUser)
-userRouter.delete("/delete", tokenCheck, deleteUser)
+authRouter.route('/')
+    .post(login)
+    .get(listUsers)
+authRouter.post('/register', hashPass, addUser)
+authRouter.put('/update', tokenCheck, updateUser)
+authRouter.delete('/delete', tokenCheck, deleteUser)
 
-module.exports = userRouter
+module.exports = authRouter
