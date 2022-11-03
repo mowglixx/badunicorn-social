@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import Card from '../../Components/Card'
 
 const Search = ({ setTitle }) => {
@@ -23,7 +23,7 @@ const Search = ({ setTitle }) => {
   }])
 
   const fetchUsersList = (setUsersList) => {
-    return fetch('http://localhost:3001/auth/list')
+    return fetch(`http://localhost:3001/auth?user=${searchQuery}`)
       .then(res => res.json())
       .then(json => {
         setUsersList(json.users)
@@ -34,7 +34,7 @@ const Search = ({ setTitle }) => {
   useEffect(() => {
     console.log(usersList)
     fetchUsersList(setUsersList)
-  }, [!!usersList])
+  }, [!!usersList, searchQuery])
 
   useEffect(() => console.table(usersList), [])
 
@@ -43,39 +43,24 @@ const Search = ({ setTitle }) => {
 
 const SearchResults = ({ searchQuery, usersList }) => {
 
-  const [results, setResult] = useState(usersList.filter(user => user.username === searchQuery))
-  const updateResults = () => setResult(usersList.filter(user => user.username === searchQuery))
-
-  useEffect(updateResults, [searchQuery])
-
-
-  if (!!results) {
+  if (usersList?.length) {
     return (
       <div className='flex-col'>
         <div className='flex-col'>
           Search {searchQuery && `- ${searchQuery}`}
         </div>
-        {results.map(user => {
+        {usersList.map(user => {
           return (
-            <Card id={user.id} header={user.username} key={user.id}>
+            <Card id={user.id} header={<Link as={'h2.card-header'} to={`/profile/${user.id}`}>{user.username}</Link>} key={user.id}>
             </Card>
           )
         })}
-      <div className='flex-col'>
-        All Users:
-        <ul>
-
-          {
-            usersList.map(user => {
-              return (
-                <li>
-                  {user.id} = {user.username}
-                </li>
-              )
-            })
-          }
-        </ul>
       </div>
+    )
+  } else if (searchQuery) {
+    return (
+      <div>
+        No results found
       </div>
     )
   }

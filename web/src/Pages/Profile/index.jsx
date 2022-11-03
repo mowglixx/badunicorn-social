@@ -10,9 +10,10 @@ import { useState } from 'react'
 
 const Profile = (props) => {
   const {userID} = useParams()
-  let profileUser = getUser(userID).data
+  let profileUser = getUserProfile(userID).data
   props.setTitle(`${profileUser.firstName} ${profileUser.lastName}'s Profile`)
-  return (
+  if (profileUser) {
+    return(
     <div className='flex-col'>
 
       {/* top shelf */}
@@ -41,11 +42,11 @@ const Profile = (props) => {
           </Card>
         </div>
         <div className='flex-col'>
-          <Feed feed={feed} userId={profileUser.userId} />
+          {/* <Feed feed={feed} userId={profileUser.userId} /> */}
         </div>
       </div>
     </div>
-  )
+  )}
 }
 
 

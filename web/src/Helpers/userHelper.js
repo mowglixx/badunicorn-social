@@ -1,7 +1,10 @@
-import { feed } from "../coverage/fakeapi"
+import handleError from "../../../server/src/helpers/errorHandler"
+import { APP_CONFIG } from "../App"
 
-export const getUser = (userID) => {
-    return {
-        data: feed.filter(user => user.author.userId === userID)[0] && feed.filter(user => user.author.userId === userID)[0].author
-    }
+export const getUserProfile = async (userID) => {
+    const profile = userID
+        ? await (await fetch(`${APP_CONFIG.api_url}/profile`, {
+        method: 'GET'
+        }).json())
+        : handleError(400, 'Profile Not found')
 }
