@@ -1,15 +1,27 @@
-const { Router } = require("express")
-const { updateProfile } = require("./controllers")
-const { tokenCheck, hashPass } = require("../../middleware/middleware")
-const profileRouter = Router()
+const authRouter = require('express').Router()
 
-profileRouter.param('userId', (req,res,next,userId) => {
+// controllers
+const { getUser } = require('./controllers')
+const { tokenCheck, hashPass } = require('../../middleware/middleware')
+const handleError = require('../../helpers/errorHandler')
 
+authRouter.param('userId', async (req, res, next, userId) => {
+    try {
+        const foundProfile = await Profile.find({ userId: userID })
+        if (foundUser) {
+            req.profile = foundProfile
+        }
+        else {
+            throw handleError(400, 'bad request')
+        }
+        next()
+    } catch (e) {
+        next(e)
+    }
 })
+authRouter.route('/:userId')
+    .get(getProfile)
+authRouter.post('/register', hashPass, addUser)
+authRouter.get('/search', listUsers)
 
-profileRouter.get("/profile/:userId", listProfiles)
-profileRouter.put("/updateProfile", tokenCheck, updateProfile)
-// will be implemented on the backend
-// profileRouter.delete("/profile", tokenCheck, deleteprofile)
-
-module.exports = profileRouter
+module.exports = authRouter

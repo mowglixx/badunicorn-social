@@ -39,6 +39,7 @@ app.use(morgan('":url" [:method] :status'))
 // Routes                    //
 /////////////////////////////// 
 app.use('/auth', authRouter)
+// app.use('/profile', profileRouter)
 
 // plans for the future
 // app.use('/profile', profileRouter)
@@ -66,7 +67,7 @@ app.get('*', (req, res, next) => {
 
 // error handling
 app.use((e, req, res, next) => {
-  res.status(e.statusCode || 500).send(e)
+  res.status(e?.statusCode || 500).send(e?e:handleError(e?.statusCode || 500, 'Unknown Error'))
 })
 
 // let the app listen on the defined port and 
