@@ -1,49 +1,32 @@
 const mongoose = require("mongoose")
-const jwt = require("jsonwebtoken")
-const bcrypt = require("bcryptjs")
-const User = require('../auth/models')
+const handleError = require("../../helpers/errorHandler")
 
-const profileSchema = new mongoose.Schema(
-  {
-    user: User,
-    name: {
-      firstName: {
-        type: String
-      },
-      middleNames: [String],
-      lastName: String,
-    },
-    contacts: {
-      emails: [String],
-      phones: [String],
-      websites: [String]
-    },
-    friends: [String]
+const profileSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: [true, 'user ID required']
+  },
+  name: {
+    firstName: String,
+    middleNames: [String],
+    lastName: String,
+  },
+  contacts: {
+    emails: [String],
+    phones: [String],
+    websites: [String]
+  },
+  friends: [String]
+})
 
-  }
-  //   {
-  //   id: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   user: {
-  //     type: userSchema,
-  //     required: true,
-  //     unique: true,
-  //   },
-  //   email: {
-  //     type: String,
-  //     required: true,
-  //     unique: true,
-  //     match: /.+\@.+\..+/,
-  //   },
-  //   password: {
-  //     type: String,
-  //     required: true,
-  //   },
-  // }
-)
+// profileSchema.statics.findByUsername = async (username) => {
+//   const user = await Profile.findOne({ 'auth.username': username })
+//   if (user) {
+//     return user
+//   }
+//   throw handleError(404, 'User doesn\'t exist')
+// }
 
-const User = mongoose.model("User", userSchema)
+const Profile = mongoose.model("Profile", profileSchema)
 
-module.exports = User
+module.exports = Profile
